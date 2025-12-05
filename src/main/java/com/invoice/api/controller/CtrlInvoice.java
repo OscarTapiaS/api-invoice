@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.invoice.api.dto.ApiResponse;
 import com.invoice.api.dto.DtoInvoiceList;
 import com.invoice.api.dto.DtoInvoiceRequest;
-import com.invoice.api.entity.Invoice;
 import com.invoice.api.service.SvcInvoice;
 import com.invoice.exception.ApiException;
 
@@ -39,10 +38,10 @@ public class CtrlInvoice {
 		return svc.getInvoices();
 	}
 
-	@GetMapping("/{id}")
-	@Operation(summary = "Consulta de factura", description = "Consulta el detalle de una factura")
-	public ResponseEntity<Invoice> getInvoice(@PathVariable("id") Integer id) {		
-		return svc.getInvoice(id);
+	@GetMapping("/user/{userId}")
+	@Operation(summary = "Consulta de facturas por usuario", description = "Devuelve la lista de facturas asociadas a un ID de usuario.")
+	public ResponseEntity<List<DtoInvoiceList>> getInvoices(@PathVariable Integer userId) {	
+		return svc.getInvoices(userId);
 	}
 	
 	@PostMapping
@@ -55,8 +54,6 @@ public class CtrlInvoice {
 	    if (bindingResult.hasErrors())
 	        throw new ApiException(HttpStatus.BAD_REQUEST, bindingResult.getAllErrors().get(0).getDefaultMessage());	
 	    
-	    System.out.println("[Controller] Authorization Header = " + request.getHeader("Authorization"));
 	    return svc.createInvoice(in, request); 
 	}
-	
 }

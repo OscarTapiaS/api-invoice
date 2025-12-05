@@ -7,13 +7,18 @@ import org.springframework.http.ResponseEntity;
 import com.invoice.api.dto.ApiResponse;
 import com.invoice.api.dto.DtoInvoiceList;
 import com.invoice.api.dto.DtoInvoiceRequest;
-import com.invoice.api.entity.Invoice;
 
 import jakarta.servlet.http.HttpServletRequest;
 
 public interface SvcInvoice {
 
-	public ResponseEntity<List<DtoInvoiceList>> getInvoices();
-	public ResponseEntity<Invoice> getInvoice(Integer id);
-	public ResponseEntity<ApiResponse> createInvoice(DtoInvoiceRequest in, HttpServletRequest request);
+    
+    public ResponseEntity<List<DtoInvoiceList>> getInvoices();
+
+    
+    public ResponseEntity<List<DtoInvoiceList>> getInvoices(Integer userId);
+
+    public ResponseEntity<ApiResponse> createInvoice(DtoInvoiceRequest in, HttpServletRequest request);
+
+   
 }

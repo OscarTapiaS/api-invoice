@@ -26,15 +26,13 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(
                 auth -> auth
-                // Endpoints públicos
                 .requestMatchers("/error", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**", "/actuator/info", "/actuator/health").permitAll()
                 
-                // INVOICE - ADMIN puede consultar todas las facturas, CUSTOMER solo las suyas
+                
                 .requestMatchers(HttpMethod.GET, "/invoice").hasAnyAuthority("ADMIN", "CUSTOMER")
-                .requestMatchers(HttpMethod.GET, "/invoice/{id}").hasAnyAuthority("ADMIN", "CUSTOMER")
+                .requestMatchers(HttpMethod.GET, "/invoice/user/{userId}").hasAnyAuthority("ADMIN", "CUSTOMER")
                 .requestMatchers(HttpMethod.POST, "/invoice").hasAuthority("CUSTOMER")
                 
-                // Cualquier otra petición requiere autenticación
                 .anyRequest().authenticated()
                 )
         .cors(cors -> cors.configurationSource(corsConfig))
