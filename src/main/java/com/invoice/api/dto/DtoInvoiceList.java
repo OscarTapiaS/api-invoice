@@ -3,21 +3,17 @@ package com.invoice.api.dto;
 public class DtoInvoiceList {
 	
 	private Integer id;
-	
 	private Integer user_id;
-	
 	private String customer_rfc;
-	
 	private String customer_name;
-	
 	private String issue_date;
-	
 	private Double total_price;
-	
 	private Integer total_items;
+	private String payment_method;   
+	private String shipping_address; 
 
 	public DtoInvoiceList(Integer id, Integer user_id, String customer_rfc, String customer_name, String issue_date,
-			Double total_price/*, Integer total_items*/) {
+			Double total_price, Integer total_items, String payment_method, String shipping_address) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
@@ -25,7 +21,9 @@ public class DtoInvoiceList {
 		this.customer_name = customer_name;
 		this.issue_date = issue_date;
 		this.total_price = total_price;
-		//this.total_items = total_items;
+		this.total_items = total_items;
+		this.payment_method = payment_method;     
+		this.shipping_address = shipping_address; 
 	}
 
 	public Integer getId() {
@@ -82,5 +80,21 @@ public class DtoInvoiceList {
 
 	public void setTotal_items(Integer total_items) {
 		this.total_items = total_items;
+	}
+
+	public String getPayment_method() {
+		return payment_method;
+	}
+
+	public void setPayment_method(String payment_method) {
+		this.payment_method = payment_method;
+	}
+
+	public String getShipping_address() {
+		return shipping_address;
+	}
+
+	public void setShipping_address(String shipping_address) {
+		this.shipping_address = shipping_address;
 	}
 }

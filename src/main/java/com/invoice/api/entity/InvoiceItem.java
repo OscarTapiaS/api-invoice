@@ -28,7 +28,7 @@ public class InvoiceItem {
 
     @NotNull(message="El unit_price es obligatorio")
     @Column(name = "unit_price")
-    private Double unit_price; // Cambiado a Double para coincidir con Invoice
+    private Double unit_price; 
 
     // Getters y Setters
     public Integer getInvoice_item_id() {

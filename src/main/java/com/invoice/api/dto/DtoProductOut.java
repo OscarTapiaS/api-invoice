@@ -11,7 +11,7 @@ public class DtoProductOut {
     private String gtin;
 
     @JsonProperty("product")
-    private String product; // Nombre del producto
+    private String product; 
 
     @JsonProperty("description")
     private String description;

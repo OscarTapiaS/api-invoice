@@ -125,6 +125,10 @@ public class SvcInvoiceImp implements SvcInvoice {
             invoice.setCustomer_name(in.getCustomer_name());
             invoice.setCurrency(in.getCurrency());
             invoice.setPayment_method(in.getPayment_method());
+            
+            // Asignación de la dirección de envío
+            invoice.setShipping_address(in.getShipping_address());
+            
             invoice.setIssue_date(LocalDateTime.now().toString());
             invoice.setSubtotal(subtotal);
             invoice.setTaxes(taxes);

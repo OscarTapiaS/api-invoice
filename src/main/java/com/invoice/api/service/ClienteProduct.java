@@ -19,7 +19,7 @@ public interface ClienteProduct {
     @GetMapping("/product/{id}/precio")
     ResponseEntity<Float> getPrecio(@PathVariable("id") Integer id);
     
-    // Si necesitas actualizar stock, debes crear este endpoint en CtrlProduct
+    
     @PatchMapping("/product/{id}/stock/{cantidad}")
     ResponseEntity<ApiResponse> actualizaStockProduct(
         @PathVariable("id") Integer id,

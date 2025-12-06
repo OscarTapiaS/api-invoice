@@ -43,6 +43,10 @@ public class Invoice {
 
     @Column(name = "payment_method")
     private String payment_method;
+    
+    // Nuevo campo agregado
+    @Column(name = "shipping_address")
+    private String shipping_address;
 
     @Column(name = "subtotal")
     private Double subtotal;
@@ -53,7 +57,7 @@ public class Invoice {
     @Column(name = "total")
     private Double total;
 
-    // Relación agregada para guardar los items
+   
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InvoiceItem> items;
 
@@ -128,6 +132,14 @@ public class Invoice {
 
     public void setPayment_method(String payment_method) {
         this.payment_method = payment_method;
+    }
+    
+    public String getShipping_address() {
+        return shipping_address;
+    }
+
+    public void setShipping_address(String shipping_address) {
+        this.shipping_address = shipping_address;
     }
 
     public Double getSubtotal() {
